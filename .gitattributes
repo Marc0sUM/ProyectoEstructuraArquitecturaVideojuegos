@@ -1,0 +1,24 @@
+# Normaliza todo como texto, excepto archivos binarios de Unity
+* text=auto
+
+# Archivos Unity como binarios (evitan conversión de EOL)
+*.unity binary
+*.prefab binary
+*.asset binary
+*.mat binary
+*.fbx binary
+*.png binary
+*.jpg binary
+*.wav binary
+
+# Scripts como texto
+*.cs text diff=csharp
+*.shader text
+*.cginc text
+*.compute text
+*.hlsl text
+
+# Otros
+*.meta text
+*.json text
+*.txt text
