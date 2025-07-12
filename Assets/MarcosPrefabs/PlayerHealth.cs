@@ -35,12 +35,18 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-   void Die()
+void Die()
 {
     Debug.Log("Player Died!");
-    animator.SetBool("Death", true); // O Trigger, según tengas
-      // Opcional: desactiva scripts de movimiento
-     GetComponent<PlayerMovement>().enabled = false;
+    animator.SetBool("Death", true);
+    GetComponent<EthanTheHero.PlayerMovement>().enabled = false;
 
+    StartCoroutine(ShowMenuAfterDelay());
+}
+
+private IEnumerator ShowMenuAfterDelay()
+{
+    yield return new WaitForSeconds(1f); // Espera un segundo antes de mostrar el menú
+    FindObjectOfType<MainMenuManager>().ShowGameOverMenu();
 }
 }
