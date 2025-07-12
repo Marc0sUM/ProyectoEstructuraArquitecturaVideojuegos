@@ -22,12 +22,18 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+void OnCollisionEnter2D(Collision2D collision)
 {
+    Debug.Log("Collision with: " + collision.gameObject.name);
+
     if (collision.gameObject.CompareTag("Player"))
     {
         Debug.Log("Player hit!");
-        // Aquí puedes llamar a una función de daño del jugador
+        PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDamage(20);
+        }
     }
 }
 }
