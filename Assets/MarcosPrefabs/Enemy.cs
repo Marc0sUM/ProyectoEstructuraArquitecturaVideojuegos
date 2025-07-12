@@ -21,4 +21,13 @@ public class Enemy : MonoBehaviour
             transform.position += (Vector3)direction * speed * Time.deltaTime;
         }
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+{
+    if (collision.gameObject.CompareTag("Player"))
+    {
+        Debug.Log("Player hit!");
+        // Aquí puedes llamar a una función de daño del jugador
+    }
+}
 }
