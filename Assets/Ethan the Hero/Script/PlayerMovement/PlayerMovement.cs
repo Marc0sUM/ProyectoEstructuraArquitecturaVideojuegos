@@ -22,9 +22,12 @@ namespace EthanTheHero
 		private Animator myAnim;
 
 		//Dash
+		/*
 		[HideInInspector] public bool isDashing;
 		private bool canDash = true;
 		private bool dashButtonPressed;
+		*/
+
 
 		//Jump
 		[HideInInspector] public bool grounded;
@@ -48,14 +51,17 @@ namespace EthanTheHero
 		}
 		void Update()
 		{
+			/*
 			if (isDashing || wallJump || myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack01") || myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack02") || myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack03"))
 				return;
+			*/
 
 			lastOnGroundTime -= Time.deltaTime;
 
 			//Input Handler
 			move.x = Input.GetAxisRaw("Horizontal");
-			dashButtonPressed = Input.GetKeyDown(KeyCode.W);
+
+			//dashButtonPressed = Input.GetKeyDown(KeyCode.W);
 			jumpButtonPressed = Input.GetButtonDown("Jump");
 
 			if (jumpButtonPressed)
@@ -67,8 +73,10 @@ namespace EthanTheHero
 			if (move.x != 0)
 				CheckDirectionToFace(move.x > 0);
 
+			/*
 			if (dashButtonPressed && canDash && !wallSliding)
 				StartCoroutine(dash());
+			*/
 
 			if (wallSliding && jumpButtonPressed)
 				StartCoroutine(wallJumpMechanic());
@@ -77,9 +85,10 @@ namespace EthanTheHero
 
 		void FixedUpdate()
 		{
+			/*
 			if (isDashing || wallJump || myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack01") || myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack02") || myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack03"))
 				return;
-
+			*/
 			if (!wallSliding)
 				run(1);
 			//checks if set box overlaps with ground
@@ -122,6 +131,7 @@ namespace EthanTheHero
 		}
 		#endregion
 
+		/*
 		#region DASH
 		private IEnumerator dash()
 		{
@@ -147,6 +157,7 @@ namespace EthanTheHero
 			canDash = true;
 		}
 		#endregion
+		*/
 
 		#region JUMP
 		private void jump()

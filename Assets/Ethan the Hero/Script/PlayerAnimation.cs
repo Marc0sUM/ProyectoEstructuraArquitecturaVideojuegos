@@ -64,7 +64,7 @@ namespace EthanTheHero
 
             #region DASH
 
-            myAnim.SetBool(dash, playerMv.isDashing);
+            //myAnim.SetBool(dash, playerMv.isDashing);
 
             #endregion
 

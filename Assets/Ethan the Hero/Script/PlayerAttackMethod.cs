@@ -39,9 +39,10 @@ namespace EthanTheHero
 
 		void Update()
 		{
-			if (playerMv.isDashing || playerMv.wallJump || playerMv.wallSliding)
+			
+			if (playerMv.wallJump || playerMv.wallSliding)
 				return;
-
+			/*playerMv.isDashing ||*/
 
 			BasicAttackCombo();
 
@@ -50,9 +51,9 @@ namespace EthanTheHero
 
 		void FixedUpdate()
 		{
-			if (playerMv.isDashing || playerMv.wallJump || playerMv.wallSliding)
+			if (playerMv.wallJump || playerMv.wallSliding)
 				return;
-
+			/*playerMv.isDashing ||*/
 			BasicAttackMethod();
 
 		}
@@ -153,7 +154,6 @@ namespace EthanTheHero
 		}
 
 		#endregion
-
 		void OnTriggerEnter2D(Collider2D collision)
 		{
 			if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack01") ||
@@ -170,6 +170,5 @@ namespace EthanTheHero
 				}
 			}
 		}
-
 	}
 }

@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage()
     {
         Debug.Log("¡El enemigo ha sido eliminado!");
-        Destroy(gameObject); // Desaparece el enemigo
+        Destroy(gameObject);
     }
 
 }
