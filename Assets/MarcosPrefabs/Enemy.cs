@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EthanTheHero;
 
 public class Enemy : MonoBehaviour
 {
@@ -23,11 +24,21 @@ public class Enemy : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision)
-{
-    if (collision.gameObject.CompareTag("Player"))
     {
-        Debug.Log("Player hit!");
-        // Aquí puedes llamar a una función de daño del jugador
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerAnimation playerAnim = collision.gameObject.GetComponent<PlayerAnimation>();
+            if (playerAnim != null)
+            {
+                playerAnim.TakeDamage();
+            }
+        }
     }
-}
+
+    public void TakeDamage()
+    {
+        Debug.Log("¡El enemigo ha sido eliminado!");
+        Destroy(gameObject); // Desaparece el enemigo
+    }
+
 }

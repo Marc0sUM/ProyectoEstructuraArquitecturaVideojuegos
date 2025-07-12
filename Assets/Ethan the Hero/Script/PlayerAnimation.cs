@@ -106,7 +106,14 @@ namespace EthanTheHero
             #endregion
         }
 
+        public void TakeDamage()
+        {
+            myAnim.SetTrigger("Hurt");
+            Debug.Log("Jugador recibió daño");
+        }
+
     }
+
 }
 
 
