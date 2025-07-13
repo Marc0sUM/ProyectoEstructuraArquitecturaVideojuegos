@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,10 +10,22 @@ public class EnemyHealth : MonoBehaviour
 
     public float knockbackForce = 5f;
 
+    private EnemyManager enemyManager; // 👈 Referencia al manager
+
     void Start()
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
+
+        enemyManager = FindObjectOfType<EnemyManager>();
+        if (enemyManager != null)
+        {
+            enemyManager.AddEnemy();
+        }
+        else
+        {
+            Debug.LogWarning("EnemyManager no encontrado en la escena");
+        }
     }
 
     public void TakeDamage(int damage, Vector2 knockbackDir)
@@ -23,7 +35,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (rb != null)
         {
-            rb.velocity = Vector2.zero; // Opcional: limpia velocidad anterior
+            rb.velocity = Vector2.zero; 
             rb.AddForce(knockbackDir * knockbackForce, ForceMode2D.Impulse);
         }
 
@@ -36,6 +48,12 @@ public class EnemyHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Enemy died!");
+
+        if (enemyManager != null)
+        {
+            enemyManager.EnemyDefeated();
+        }
+
         Destroy(gameObject);
     }
 }
