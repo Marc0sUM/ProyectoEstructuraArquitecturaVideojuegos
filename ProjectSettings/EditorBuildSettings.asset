@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/MarcosPrefabs/Test.unity
     guid: e0f8898d7f3897444b67b2d542d3f5ad
+  - enabled: 1
+    path: Assets/Scenes/EscenaNivel1.unity
+    guid: 93f3c046490e93745bf3bb8b6889fa04
   m_configObjects: {}
