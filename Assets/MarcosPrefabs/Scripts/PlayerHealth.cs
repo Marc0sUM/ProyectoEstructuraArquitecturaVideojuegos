@@ -35,6 +35,12 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void AumentarVida(int cantidad){
+        currentHealth = Mathf.Clamp(currentHealth + cantidad, 0, maxHealth);
+        if (healthBar_LR != null) healthBar_LR.value = currentHealth;
+        Debug.Log($"Vida aumentada en: {cantidad}. Actual: {currentHealth}/{maxHealth}");
+    }
+
 void Die()
 {
     Debug.Log("Player Died!");
