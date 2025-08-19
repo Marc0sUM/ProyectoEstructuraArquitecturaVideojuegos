@@ -19,14 +19,13 @@ public class CameraFollow : MonoBehaviour
     {
         if (target == null) return;
 
-        // Calcula cuánto se ha movido el player respecto a su posición inicial
-        Vector3 targetDelta = (target.position - targetInitialPosition) + offset;
+        // Posición deseada: siempre centrada en el jugador (+ offset si querés levantarla o alejarla)
+        Vector3 desiredPosition = target.position + offset;
 
-        // Suma ese delta a la posición inicial de la cámara
-        Vector3 desiredPosition = initialPosition + new Vector3(targetDelta.x, targetDelta.y, 0);
-
+        // Interpolación suave
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
 
-        transform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, initialPosition.z);
+        // Mantener la cámara mirando al jugador en XY y conservar el Z de la cámara
+        transform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, transform.position.z);
     }
 }
