@@ -12,12 +12,12 @@ public class EmeraldPickup : MonoBehaviour
             Destroy(gameObject, autoDestroySeconds);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!other.CompareTag("Player")) return;
+        if (!collision.collider.CompareTag("Player")) return;
 
-        // Cuando el jugador la recoge, mostramos menú de victoria
-        FindObjectOfType<MainMenuManager>().ShowGameOverMenu();
+        var menu = FindObjectOfType<LvlManagerC>();
+        if (menu != null) menu.ShowGameLevelOverMenu();
 
         Destroy(gameObject);
     }
